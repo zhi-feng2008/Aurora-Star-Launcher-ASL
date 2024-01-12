@@ -1,0 +1,93 @@
+﻿<Page
+    x:Class="Aurora_Star_Launcher.Views.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="clr-namespace:Aurora_Star_Launcher.Helpers"
+    xmlns:local="clr-namespace:Aurora_Star_Launcher.Views.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="SettingsPage"
+    d:DataContext="{d:DesignInstance local:SettingsPage,
+                                     IsDesignTimeCreatable=False}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+    ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+    </Page.Resources>
+    <Grid>
+        <TextBlock
+            FontSize="20"
+            FontWeight="Medium"
+            Text="启动器设置" Margin="0,0,700,415" />
+        <ui:CardControl Height="70" Margin="0,30,0,0" VerticalAlignment="Top">
+            <Grid Height="50" Width="786">
+                <TextBlock Text="主题" FontSize="15" Margin="0,8,755,17"/>
+                <RadioButton
+                Margin="531,3,0,0"
+                Height="50"
+                Width="100"
+                Command="{Binding ViewModel.ChangeThemeCommand, Mode=OneWay}"
+                CommandParameter="theme_light"
+                Content="Light"
+                GroupName="themeSelect"
+                IsChecked="{Binding ViewModel.CurrentTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}" VerticalAlignment="Top" />
+                <RadioButton
+                Margin="646,3,0,0"
+                Height="50"
+                Width="100"
+                Command="{Binding ViewModel.ChangeThemeCommand, Mode=OneWay}"
+                CommandParameter="theme_dark"
+                Content="Dark"
+                GroupName="themeSelect"
+                IsChecked="{Binding ViewModel.CurrentTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}" VerticalAlignment="Top" />
+            </Grid>
+        </ui:CardControl>
+        <TextBlock
+            FontSize="20"
+            FontWeight="Medium"
+            Text="游戏设置" Margin="5,110,695,315" />
+        <ui:CardControl Height="75" Margin="0,140,0,0" VerticalAlignment="Top">
+            <Grid Height="50" Width="786">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="111*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Java设置" FontSize="15" Margin="0,11,570,17"/>
+                <ComboBox x:Name="Java" Height="35" Margin="241,3,35,0" VerticalAlignment="Top" Grid.ColumnSpan="2" SelectionChanged="JavaList_SelectionChanged"/>
+            </Grid>
+        </ui:CardControl>
+        <ui:CardControl Height="75" Margin="0,220,0,0" VerticalAlignment="Top">
+            <Grid Height="50" Width="786">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="111*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="内存设置" FontSize="15" Margin="1,10,569,17"/>
+                <Label Content="最大内存：" Height="30" Margin="259,10,345,12"/>
+                <TextBox x:Name="MemoryText_1" Height="37" Margin="336,3,180,0" VerticalAlignment="Top" TextChanged="MemoryText_1_TextChanged"/>
+                <Label Content="最小内存：" Height="30" Margin="530,10,70,12"/>
+                <TextBox x:Name="MemoryText_2" Height="35" Margin="600,3,35,0" VerticalAlignment="Top" Grid.ColumnSpan="2" TextChanged="MemoryText_2_TextChanged"/>
+            </Grid>
+        </ui:CardControl>
+        <TextBlock
+            FontSize="20"
+            FontWeight="Medium"
+            Width="250"
+            Text="关于 Aurora Star Launcher" Margin="-5,300,555,120" />
+        <ui:CardControl Height="115" Margin="0,335,0,0" VerticalAlignment="Top">
+            <Grid Height="90" Width="786">
+                <TextBlock Text="Aurora Star Launcher 软件以GPL3.0免费开源。 任何人不得以任何形式擅自非法盗取、复制此软件的所有内容。 &#13;Copyright (c) Aurora Studio 、THZ同学." Margin="1,6,18,47"/>
+                <Button Content="用户许可与免费条款" Margin="471,48,0,0" VerticalAlignment="Top" Height="30" Width="155" x:Name="ULA" Click="ULA_Click"/>
+                <Button Content="GitHub仓库" Margin="11,48,0,0" VerticalAlignment="Top" Height="30" Width="130" x:Name="GitHub" Click="GitHub_Click"/>
+                <Button Content="Gitee仓库" Margin="156,48,0,0" VerticalAlignment="Top" Height="30" Width="130" x:Name="Gitee" Click="Gitee_Click"/>
+                <Button Content="官网" Margin="301,48,0,0" VerticalAlignment="Top" Height="30" Width="70" x:Name="GW" Click="Website_Click"/>
+                <Button Content="赞助" Height="30" Width="70" Margin="386,48,0,0" VerticalAlignment="Top" Click="Sponsor_Click"/>
+            </Grid>
+        </ui:CardControl>
+    </Grid>
+</Page>
