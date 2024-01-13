@@ -19,7 +19,7 @@
     mc:Ignorable="d">
     <Grid>
         <ListBox x:Name="DownloadList" Margin="0,0,5,99"/>
-        <Button Content="°²×°"  x:Name="Install" Height="55" Width="120" Margin="665,390,0,0" VerticalAlignment="Top" Background="BlueViolet" Click="Install_Click"/>
-        <Button Content="Ë¢ÐÂ"  x:Name="Flushed" Height="55" Margin="584,390,0,0" VerticalAlignment="Top" Width="61" Click="Flushed_Click"/>
+        <Button Content="å®‰è£…"  x:Name="Install" Height="55" Width="120" Margin="665,390,0,0" VerticalAlignment="Top" Background="BlueViolet" Click="Install_Click"/>
+        <Button Content="åˆ·æ–°"  x:Name="Flushed" Height="55" Margin="584,390,0,0" VerticalAlignment="Top" Width="61" Click="Flushed_Click"/>
     </Grid>
 </Page>
