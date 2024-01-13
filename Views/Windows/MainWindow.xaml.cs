@@ -5,7 +5,6 @@
 
 using Aurora_Star_Launcher.ViewModels.Windows;
 using Wpf.Ui.Controls;
-using Avalonia.Controls;
 
 namespace Aurora_Star_Launcher.Views.Windows
 {

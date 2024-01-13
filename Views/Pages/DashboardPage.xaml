@@ -17,8 +17,8 @@
     mc:Ignorable="d">
 
     <Grid Height="450">
-        <TabControl Height="400" Margin="430,0,0,50">
-            <TabItem Header="Microsoft" Height="35" Width="80" Margin="65,0,-65,0">
+        <TabControl Height="400" Width="300" Margin="500,0,0,50">
+            <TabItem Header="Microsoft" Height="35" Width="80">
                 <Grid Width="250">
                     <Image x:Name="Microsoft_User_Img" Height="150" Width="150" Margin="32,32,24,181"/>
                     <TextBlock x:Name="Microsoft_User_Name" Height="40" Width="150" Margin="55,210,51,111"/>
@@ -26,33 +26,43 @@
                     <Button Content="启动游戏" Background="BlueViolet" x:Name="Microsoft_Start" Height="55" Width="135" VerticalAlignment="Top" Margin="64,300,0,0" Click="Microsoft_Start_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="离线登录" Height="35" Width="80" Margin="0,0,-65,0" HorizontalAlignment="Right">
+            <TabItem Header="离线登录" Height="35" Width="80" HorizontalAlignment="Center">
                 <Grid Width="250">
                     <Image x:Name="Offine_User_Img" Height="150" Width="150" Margin="32,32,24,181"/>
                     <TextBox Text="Player" x:Name="Offine_User_Name" Height="40" Width="135" Margin="64,212,51,111"/>
-                    <Button Content="启动游戏" Background="BlueViolet" x:Name="Offine_Start" Height="55" Width="135" VerticalAlignment="Top" Margin="64,300,0,0"/>
+                    <Button Content="启动游戏" Background="BlueViolet" x:Name="Offine_Start" Height="55" Width="135" VerticalAlignment="Top" Click="Offine_Start_Click"  Margin="64,300,0,0"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="第三方登录" Height="35" Width="90" Margin="65,0,-65,0">
+            <TabItem Header="第三方登录" Height="35" Width="90">
                 <Grid Width="250">
                     <TabControl Height="360">
                         <TabItem Header="外置登录" Height="35" Width="80">
                             <Grid>
-                                <Label Content="服务器地址：" Height="25" Width="80" FontSize="15" Margin="23,20,145,284"/>
-                                <TextBox x:Name="External_01_ServerID" Height="40" Margin="12,9,10,274"/>
-                                <Button Content="启动游戏" Background="BlueViolet" x:Name="External_Start_1" Height="55" Width="135" VerticalAlignment="Top" Margin="64,263,0,0"/>
+                                <Label Content="认证服务器地址：" Height="25" FontSize="15" Margin="23,20,99,278"/>
+                                <TextBox x:Name="External_01_ServerID" Height="40" Width="225" Margin="12,9,10,274"/>
+                                <Label Content="用户名：" Height="25" FontSize="15" Margin="23,72,149,227"/>
+                                <TextBox x:Name="External_01_User_Name" Height="40" Width="225" Margin="12,60,8,221"/>
+                                <Label Content="密码：" Height="25" FontSize="15" Margin="23,123,149,177"/>
+                                <TextBox x:Name="External_01_User_Password" Height="40" Width="225" Margin="12,104,11,161"/>
+                                <Button Content="启动游戏" Background="BlueViolet" x:Name="External_Start_1" Height="55" Width="135" VerticalAlignment="Top" Margin="64,263,0,0" Click="External_Start_1_Click"/>
                             </Grid>
                         </TabItem>
                         <TabItem Header="统一通行证" Height="35" Width="85">
                             <Grid>
-                                <Button Content="启动游戏" Background="BlueViolet" x:Name="External_Start_02" Height="55" Width="135" VerticalAlignment="Top" Margin="64,263,0,0"/>
+                                <Label Content="服务器ID：" Height="25" Width="80" FontSize="15" Margin="23,20,145,284"/>
+                                <TextBox x:Name="External_02_ServerID" Height="40" Width="225" Margin="12,9,10,274"/>
+                                <Label Content="用户名：" Height="25" FontSize="15" Margin="23,72,149,227"/>
+                                <TextBox x:Name="External_02_User_Name" Height="40" Width="225" Margin="12,60,8,221"/>
+                                <Label Content="密码：" Height="25" FontSize="15" Margin="23,123,149,177"/>
+                                <TextBox x:Name="External_02_User_Password" Height="40" Width="225" Margin="12,104,11,161"/>
+                                <Button Content="启动游戏" Background="BlueViolet" x:Name="External_Start_02" Height="55" Width="135" VerticalAlignment="Top" Margin="64,263,0,0" Click="External_Start_02_Click"/>
                             </Grid>
                         </TabItem>
                     </TabControl>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Label Content="版本选择:" Height="20" Width="60" Margin="440,415,300,15"/>
-        <ComboBox x:Name="version" Height="40" Margin="515,405,0,0" VerticalAlignment="Top"/>
+        <Label Content="版本选择:" Height="20" Width="60" Margin="505,415,235,15"/>
+        <ComboBox x:Name="version" Width="200" Height="40" Margin="590,405,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>
