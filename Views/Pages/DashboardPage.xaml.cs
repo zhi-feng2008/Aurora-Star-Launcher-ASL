@@ -21,7 +21,7 @@ namespace Aurora_Star_Launcher.Views.Pages
             InitializeComponent();
 
             // 自动寻找版本
-            var versions = StarLight_Core().ToArray();
+            var versions = ().ToArray();
             version.ItemsSource = versions;//绑定数据源
             version.DisplayMemberPath = "Id";//设置comboBox显示的为版本Id
 
@@ -68,7 +68,7 @@ namespace Aurora_Star_Launcher.Views.Pages
                 {
                     string verText = version.SelectedItem.ToString();
                     var auth = new OfflineAuthentication(Offine_User_Name.Text);
-                    var account = await auth.Name.();
+                    var account = await auth.Offline();
                     LaunchConfig args = new()
                     {
                         GameWindowConfig = new()
