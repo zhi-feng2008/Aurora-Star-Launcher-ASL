@@ -5,17 +5,19 @@
 
 using Aurora_Star_Launcher.ViewModels.Pages;
 using Wpf.Ui.Controls;
-using StarLight_Core.Launch;
-using StarLight_Core.Authentication;
-using StarLight_Core.Models;
-using StarLight_Core.Utilities;
-using StarLight_Core.Enum;
-
+using MinecraftLaunch.Classes.Models.Auth;
+using MinecraftLaunch.Classes.Models.Launch;
+using KMCCC.Launcher;
 
 namespace Aurora_Star_Launcher.Views.Pages
 {
     public partial class DashboardPage : INavigableView<DashboardViewModel>
     {
+        public static LaunchConfig LaunchConfig { get; } = new LaunchConfig();
+        public Account UserInfo { get; private set; }
+
+        public static LauncherCore Core = LauncherCore.Create();
+        private string versionURL;
         public DashboardViewModel ViewModel { get; }
 
         public DashboardPage(DashboardViewModel viewModel)
@@ -24,6 +26,8 @@ namespace Aurora_Star_Launcher.Views.Pages
             DataContext = this;
 
             InitializeComponent();
+
+
         }
 
         // 启动&登录 S

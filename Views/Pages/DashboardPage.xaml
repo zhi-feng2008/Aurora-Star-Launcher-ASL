@@ -16,13 +16,9 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
 
-    <Grid VerticalAlignment="Center" Height="450">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-        <TabControl Grid.Column="1" Height="400" Margin="548,0,-118,50">
-            <TabItem Header="Microsoft" Height="35" Width="80">
+    <Grid Height="450">
+        <TabControl Height="400" Margin="430,0,0,50">
+            <TabItem Header="Microsoft" Height="35" Width="80" Margin="65,0,-65,0">
                 <Grid Width="250">
                     <Image x:Name="Microsoft_User_Img" Height="150" Width="150" Margin="32,32,24,181"/>
                     <TextBlock x:Name="Microsoft_User_Name" Height="40" Width="150" Margin="55,210,51,111"/>
@@ -30,14 +26,14 @@
                     <Button Content="启动游戏" Background="BlueViolet" x:Name="Microsoft_Start" Height="55" Width="135" VerticalAlignment="Top" Margin="64,300,0,0" Click="Microsoft_Start_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="离线登录" Height="35" Width="80">
+            <TabItem Header="离线登录" Height="35" Width="80" Margin="0,0,-65,0" HorizontalAlignment="Right">
                 <Grid Width="250">
                     <Image x:Name="Offine_User_Img" Height="150" Width="150" Margin="32,32,24,181"/>
                     <TextBox Text="Player" x:Name="Offine_User_Name" Height="40" Width="135" Margin="64,212,51,111"/>
                     <Button Content="启动游戏" Background="BlueViolet" x:Name="Offine_Start" Height="55" Width="135" VerticalAlignment="Top" Margin="64,300,0,0"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="第三方登录" Height="35" Width="90">
+            <TabItem Header="第三方登录" Height="35" Width="90" Margin="65,0,-65,0">
                 <Grid Width="250">
                     <TabControl Height="360">
                         <TabItem Header="外置登录" Height="35" Width="80">
@@ -56,5 +52,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
+        <Label Content="版本选择:" Height="20" Width="60" Margin="440,415,300,15"/>
+        <ComboBox x:Name="version" Height="40" Margin="515,405,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>
