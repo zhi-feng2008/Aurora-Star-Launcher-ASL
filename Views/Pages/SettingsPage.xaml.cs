@@ -11,6 +11,10 @@ namespace Aurora_Star_Launcher.Views.Pages
 
         public static ComboBox JavaList { get; set; } = new ComboBox();
         public static System.Windows.Controls.TextBox MemoryBox { get; set; } = new System.Windows.Controls.TextBox();
+
+        public static System.Windows.Controls.TextBox GameH { get; set; } = new System.Windows.Controls.TextBox();
+        public static System.Windows.Controls.TextBox GameW { get; set; } = new System.Windows.Controls.TextBox();
+
         public SettingsPage(SettingsViewModel viewModel)
         {
             ViewModel = viewModel;
@@ -19,7 +23,9 @@ namespace Aurora_Star_Launcher.Views.Pages
             InitializeComponent();
 
             JavaList = Java;
-            MemoryBox = MemoryText_1;
+            MemoryBox = MemoryText;
+            GameH = Game_Window_Height;
+            GameW = Game_Window_Width;
 
             // 自动寻找Java
             var javaInfo = JavaUtil.GetJavas();

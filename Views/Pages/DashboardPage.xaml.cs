@@ -16,6 +16,7 @@ namespace Aurora_Star_Launcher.Views.Pages
 
         public static LauncherCore Core = LauncherCore.Create();
         private string versionURL;
+
         public DashboardViewModel ViewModel { get; }
 
         public DashboardPage(DashboardViewModel viewModel)
@@ -119,9 +120,22 @@ namespace Aurora_Star_Launcher.Views.Pages
         }
         // c-a 外置 E
         // c-b 统一通行证 S
-        private void External_Start_02_Click(object sender, RoutedEventArgs e)
+        private async void External_Start_02_Click(object sender, RoutedEventArgs e)
         {
-            
+            var auth = new UnifiedPassAuthenticator(External_02_User_Name.Text, External_02_User_Password.Text, External_02_ServerID.Text);
+            var account = auth.UnifiedPassAuthAsync();
+            LaunchConfig args = new()
+            {
+                GameWindowConfig = new()
+                {
+                    Height = int.Parse(SettingsPage.GameH.Text),
+                    Width = int.Parse(SettingsPage.GameW.Text),
+                },
+                Account = new()
+                {
+
+                },
+            };
         }
         // c-a 统一通行证 E
         // c 第三方 E

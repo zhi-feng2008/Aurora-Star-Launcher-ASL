@@ -33,28 +33,35 @@
                     <Button Content="启动游戏" Background="BlueViolet" x:Name="Offine_Start" Height="55" Width="135" VerticalAlignment="Top" Click="Offine_Start_Click"  Margin="64,300,0,0"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="第三方登录" Height="35" Width="90">
+            <TabItem Header="第三方登录" Height="35" Width="80" HorizontalAlignment="Center">
                 <Grid Width="250">
                     <TabControl Height="360">
                         <TabItem Header="外置登录" Height="35" Width="80">
                             <Grid>
-                                <Label Content="认证服务器地址：" Height="25" FontSize="15" Margin="23,20,99,278"/>
-                                <TextBox x:Name="External_01_ServerID" Height="40" Width="225" Margin="12,9,10,274"/>
-                                <Label Content="用户名：" Height="25" FontSize="15" Margin="23,72,149,227"/>
-                                <TextBox x:Name="External_01_User_Name" Height="40" Width="225" Margin="12,60,8,221"/>
-                                <Label Content="密码：" Height="25" FontSize="15" Margin="23,123,149,177"/>
-                                <TextBox x:Name="External_01_User_Password" Height="40" Width="225" Margin="12,104,11,161"/>
+                                <Image x:Name="External_01_User_Img" Height="80" Width="80" Margin="14,6,154,237"/>
+                                <Label Content="默认为LittleSkin登录。" Height="20" Width="130" Margin="64,241,54,61"/>
+                                <TextBlock Text="Yggdrasil&#13;认证服务器" FontSize="20" Margin="109,2,9,271" TextAlignment="Right"/>
+                                <TextBlock x:Name="Exteranl_01_User_Name" Height="30" Margin="104,56,14,237"/>
+                                <Label Content="服务器ID：" Height="25" Width="80" FontSize="15" Margin="24,106,144,191"/>
+                                <TextBox x:Name="External_01_ServerID" Text="https://littleskin.cn/api/yggdrasil" Height="40" Width="225" Margin="14,96,9,187"/>
+                                <Label Content="用户名：" Height="25" FontSize="15" Margin="23,156,149,141"/>
+                                <TextBox x:Name="External_01_User_Name" Height="40" Width="225" Margin="14,146,9,137"/>
+                                <Label Content="密码：" Height="25" FontSize="15" Margin="24,206,148,91"/>
+                                <TextBox x:Name="External_01_User_Password" Height="40" Width="225" Margin="14,196,9,87"/>
                                 <Button Content="启动游戏" Background="BlueViolet" x:Name="External_Start_1" Height="55" Width="135" VerticalAlignment="Top" Margin="64,263,0,0" Click="External_Start_1_Click"/>
                             </Grid>
                         </TabItem>
                         <TabItem Header="统一通行证" Height="35" Width="85">
                             <Grid>
-                                <Label Content="服务器ID：" Height="25" Width="80" FontSize="15" Margin="23,20,145,284"/>
-                                <TextBox x:Name="External_02_ServerID" Height="40" Width="225" Margin="12,9,10,274"/>
-                                <Label Content="用户名：" Height="25" FontSize="15" Margin="23,72,149,227"/>
-                                <TextBox x:Name="External_02_User_Name" Height="40" Width="225" Margin="12,60,8,221"/>
-                                <Label Content="密码：" Height="25" FontSize="15" Margin="23,123,149,177"/>
-                                <TextBox x:Name="External_02_User_Password" Height="40" Width="225" Margin="12,104,11,161"/>
+                                <Image x:Name="External_02_User_Img" Height="80" Width="80" Margin="14,6,154,237"/>
+                                <TextBlock Text="统一通行证" FontSize="20" Margin="134,2,9,295" TextAlignment="Right"/>
+                                <TextBlock x:Name="Exteranl_02_User_Name" Height="30" Margin="104,56,14,237"/>
+                                <Label Content="服务器ID：" Height="25" Width="80" FontSize="15" Margin="24,106,144,191"/>
+                                <TextBox x:Name="External_02_ServerID" Height="40" Width="225" Margin="14,96,9,187"/>
+                                <Label Content="用户名：" Height="25" FontSize="15" Margin="23,156,149,141"/>
+                                <TextBox x:Name="External_02_User_Name" Height="40" Width="225" Margin="14,146,9,137"/>
+                                <Label Content="密码：" Height="25" FontSize="15" Margin="24,206,148,91"/>
+                                <TextBox x:Name="External_02_User_Password" Height="40" Width="225" Margin="14,196,9,87"/>
                                 <Button Content="启动游戏" Background="BlueViolet" x:Name="External_Start_02" Height="55" Width="135" VerticalAlignment="Top" Margin="64,263,0,0" Click="External_Start_02_Click"/>
                             </Grid>
                         </TabItem>

@@ -10,7 +10,7 @@
     Title="SettingsPage"
     d:DataContext="{d:DesignInstance local:SettingsPage,
                                      IsDesignTimeCreatable=False}"
-    d:DesignHeight="450"
+    d:DesignHeight="560"
     d:DesignWidth="800"
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
@@ -19,12 +19,12 @@
     <Page.Resources>
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
     </Page.Resources>
-    <Grid>
+    <Grid Height="560">
         <TextBlock
             FontSize="20"
             FontWeight="Medium"
             Text="启动器设置" Margin="0,0,700,415" />
-        <ui:CardControl Margin="0,30,0,0" VerticalAlignment="Top" Height="75">
+        <ui:CardControl Margin="0,30,0,0" VerticalAlignment="Top" Height="70">
             <Grid Height="50">
                 <TextBlock Width="500" Text="主题" FontSize="15" Margin="0,8,755,17"/>
                 <RadioButton
@@ -50,27 +50,35 @@
         <TextBlock
             FontSize="20"
             FontWeight="Medium"
-            Text="游戏设置" Margin="5,110,695,315" />
-        <ui:CardControl Height="75" Margin="0,140,0,0" VerticalAlignment="Top">
+            Text="游戏设置" Margin="5,115,695,860" />
+        <ui:CardControl Height="75" Margin="0,145,0,0" VerticalAlignment="Top">
             <Grid Height="45">
                 <TextBlock Width="500" Text="Java设置" FontSize="15" Margin="0,11,570,9"/>
                 <ComboBox x:Name="Java" Height="40" Margin="271,0,344,0" SelectionChanged="JavaList_SelectionChanged"/>
             </Grid>
         </ui:CardControl>
-        <ui:CardControl Height="75" Margin="0,220,0,0" VerticalAlignment="Top">
+        <ui:CardControl Height="75" Margin="0,230,0,0" VerticalAlignment="Top">
             <Grid>
                 <TextBlock Width="500" Text="内存设置" FontSize="15" Margin="1,10,569,13"/>
-                <Label Content="最大内存：" Width="100" Height="30" Margin="271,10,699,-2"/>
-                <TextBox x:Name="MemoryText_1" Width="150" Height="37" Margin="341,0,579,0" VerticalAlignment="Center" TextChanged="MemoryText_1_TextChanged"/>
-                <Label Content="最小内存：" Width="100" Height="30" Margin="506,13,464,-2"/>
-                <TextBox x:Name="MemoryText_2" Width="150" Height="35" Margin="576,0,344,0" VerticalAlignment="Center" TextChanged="MemoryText_2_TextChanged"/>
+                <Label Content="最大内存：" Height="30" Margin="501,10,494,-2"/>
+                <TextBox x:Name="MemoryText" Width="150" Height="37" Margin="576,0,344,0" VerticalAlignment="Center" TextChanged="MemoryText_1_TextChanged"/>
+            </Grid>
+        </ui:CardControl>
+        <ui:CardControl Height="75" Margin="0,315,0,0" VerticalAlignment="Top">
+            <Grid>
+                <TextBlock Width="500" Text="窗口大小" FontSize="15" Margin="1,10,569,13"/>
+                <ToggleButton Content="全屏" Height="35" Width="80" Margin="201,0,0,0"/>
+                <Label Content="高度：" Height="30" Margin="299,13,731,-2"/>
+                <TextBox x:Name="Game_Window_Height" Width="150" Height="37" Margin="341,0,579,0" VerticalAlignment="Center" TextChanged="MemoryText_1_TextChanged"/>
+                <Label Content="宽度：" Height="30" Margin="534,13,496,-2"/>
+                <TextBox x:Name="Game_Window_Width" Width="150" Height="35" Margin="576,0,344,0" VerticalAlignment="Center" TextChanged="MemoryText_2_TextChanged"/>
             </Grid>
         </ui:CardControl>
         <TextBlock
             FontSize="20"
             FontWeight="Medium"
-            Text="关于 Aurora Star Launcher" Margin="-5,300,555,120" />
-        <ui:CardControl Height="115" Margin="0,335,0,0" VerticalAlignment="Top">
+            Text="关于 Aurora Star Launcher" Margin="5,405,545,130" />
+        <ui:CardControl Height="115" Margin="5,435,-5,0" VerticalAlignment="Top">
             <Grid Height="93">
                 <TextBlock Width="750" Text="Aurora Star Launcher 软件以GPL3.0免费开源。 任何人不得以任何形式擅自非法盗取、复制此软件的所有内容。 &#13;Copyright (c) Aurora Studio 、THZ同学." Margin="1,-2,18,45"/>
                 <Button Content="用户许可与免费条款" Margin="471,48,0,0" VerticalAlignment="Top" Height="30" Width="155" x:Name="ULA" Click="ULA_Click"/>
