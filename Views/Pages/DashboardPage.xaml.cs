@@ -4,6 +4,8 @@ using StarLight_Core.Authentication;
 using System.Diagnostics;
 using MessageBox = System.Windows.MessageBox;
 using StarLight_Core.Models.Launch;
+using StarLight_Core.Utilities;
+using StarLight_Core.Launch;
 
 namespace Aurora_Star_Launcher.Views.Pages
 {
@@ -21,7 +23,7 @@ namespace Aurora_Star_Launcher.Views.Pages
             InitializeComponent();
 
             // 自动寻找版本
-            var versions = ().ToArray();
+            var versions = GameCoreUtil.GetGameCores();
             version.ItemsSource = versions;//绑定数据源
             version.DisplayMemberPath = "Id";//设置comboBox显示的为版本Id
 
@@ -68,7 +70,7 @@ namespace Aurora_Star_Launcher.Views.Pages
                 {
                     string verText = version.SelectedItem.ToString();
                     var auth = new OfflineAuthentication(Offine_User_Name.Text);
-                    var account = await auth.Offline();
+                    var account = auth.OfflineAuth();
                     LaunchConfig args = new()
                     {
                         GameWindowConfig = new()
@@ -91,8 +93,13 @@ namespace Aurora_Star_Launcher.Views.Pages
                             JavaPath = SettingsPage.JavaList.SelectedValue + "\\javaw.exe"
                         }
                     };
-                    var launch = new MinecraftLaunch(args);
-                    var la = await launch.Lanchasymc(ReportProgess);
+                    var launch = new StarLight_Core.Launch.MinecraftLaunch(args);
+                    var la = await launch.LaunchAsync(ReportProgress);
+                        
+                    static void ReportProgress(ProgressReport report)
+                    {
+                        Console.WriteLine($"{report.Description} ({report.Percentage}%)"); // 显示当前操作与进度
+                    }
                 }
                 catch
                 {
@@ -144,8 +151,13 @@ namespace Aurora_Star_Launcher.Views.Pages
                             JavaPath = SettingsPage.JavaList.SelectedValue + "\\javaw.exe"
                         }
                     };
-                    var launch = new MinecraftLaunch(args);
-                    var la = await launch.Lanchasymc(ReportProgess);
+                    var launch = new StarLight_Core.Launch.MinecraftLaunch(args);
+                    var la = await launch.LaunchAsync(ReportProgress);
+                    
+                    static void ReportProgress(ProgressReport report)
+                    {
+                        Console.WriteLine($"{report.Description} ({report.Percentage}%)"); // 显示当前操作与进度
+                    }
                 }
                 catch
                 {
