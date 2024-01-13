@@ -67,11 +67,10 @@
         <ui:CardControl Height="75" Margin="0,315,0,0" VerticalAlignment="Top">
             <Grid>
                 <TextBlock Width="500" Text="窗口大小" FontSize="15" Margin="1,10,569,13"/>
-                <ToggleButton Content="全屏" Height="35" Width="80" Margin="201,0,0,0"/>
                 <Label Content="高度：" Height="30" Margin="299,13,731,-2"/>
-                <TextBox x:Name="Game_Window_Height" Width="150" Height="37" Margin="341,0,579,0" VerticalAlignment="Center" TextChanged="MemoryText_1_TextChanged"/>
+                <TextBox x:Name="Game_Window_Height" Text="400" Width="150" Height="37" Margin="341,0,579,0" VerticalAlignment="Center" TextChanged="MemoryText_1_TextChanged"/>
                 <Label Content="宽度：" Height="30" Margin="534,13,496,-2"/>
-                <TextBox x:Name="Game_Window_Width" Width="150" Height="35" Margin="576,0,344,0" VerticalAlignment="Center" TextChanged="MemoryText_2_TextChanged"/>
+                <TextBox x:Name="Game_Window_Width" Width="150" Height="35" Text="850" Margin="576,0,344,0" VerticalAlignment="Center" TextChanged="MemoryText_2_TextChanged"/>
             </Grid>
         </ui:CardControl>
         <TextBlock
