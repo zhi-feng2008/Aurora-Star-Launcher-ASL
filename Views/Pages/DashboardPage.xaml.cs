@@ -2,17 +2,15 @@
 using Wpf.Ui.Controls;
 using StarLight_Core.Authentication;
 using System.Diagnostics;
-using MessageBox = System.Windows.MessageBox;
 using StarLight_Core.Models.Launch;
 using StarLight_Core.Utilities;
 using StarLight_Core.Launch;
+using MessageBox = System.Windows.MessageBox;
 
 namespace Aurora_Star_Launcher.Views.Pages
 {
     public partial class DashboardPage : INavigableView<DashboardViewModel>
     {
-        private string versionURL;
-
         public DashboardViewModel ViewModel { get; }
 
         public DashboardPage(DashboardViewModel viewModel)
@@ -22,14 +20,21 @@ namespace Aurora_Star_Launcher.Views.Pages
 
             InitializeComponent();
 
-            // 自动寻找版本
-            var versions = GameCoreUtil.GetGameCores();
-            version.ItemsSource = versions;//绑定数据源
-            version.DisplayMemberPath = "Id";//设置comboBox显示的为版本Id
+            try
+            {
+                // 自动寻找版本
+                var versions = GameCoreUtil.GetGameCores();
+                version.ItemsSource = versions;//绑定数据源
+                version.DisplayMemberPath = "Id";//设置comboBox显示的为版本Id
 
-            // 初始选择
-            version.SelectedIndex = 1;
-            SettingsPage.JavaList.SelectedIndex = 1;
+                // 初始选择
+                version.SelectedIndex = 1;
+                SettingsPage.JavaList.SelectedIndex = 1;
+            }
+            catch
+            {
+                MessageBox.Show("无法获取Minecarft版本信息，若是第一次使用，请无视此消息！", "提示");
+            };
 
         }
 
@@ -93,7 +98,7 @@ namespace Aurora_Star_Launcher.Views.Pages
                             JavaPath = SettingsPage.JavaList.SelectedValue + "\\javaw.exe"
                         }
                     };
-                    var launch = new StarLight_Core.Launch.MinecraftLaunch(args);
+                    var launch = new MinecraftLaunch(args);
                     var la = await launch.LaunchAsync(ReportProgress);
                         
                     static void ReportProgress(ProgressReport report)
@@ -112,6 +117,7 @@ namespace Aurora_Star_Launcher.Views.Pages
             }
         }
         // b 离线 S
+
         // c 第三方 S
         // c-a 外置 S
         private void External_Start_1_Click(object sender, RoutedEventArgs e)
