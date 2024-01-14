@@ -7,6 +7,7 @@ using StarLight_Core.Utilities;
 using StarLight_Core.Launch;
 using System.IO;
 using System.Reflection;
+using Newtonsoft.Json;
 using MessageBox = System.Windows.MessageBox;
 using MessageBoxButton = System.Windows.MessageBoxButton;
 
@@ -28,20 +29,10 @@ namespace Aurora_Star_Launcher.Views.Pages
 
             // 创建文件夹路径  
             string folderPath = Path.Combine(appRootDir, "ASL");
-            string fileName = "config.txt"; // 文件名  
+            string fileName = "config.json"; // 文件名  
             string filePath = Path.Combine(folderPath, fileName); // 拼接文件夹路径和文件名
             //配置项模板写入
-            string content = 
-                "Game_H = \r\n" +
-                "Game_W = \r\n" +
-                "Game_Memory = \r\n" +
-                "Microsoft_Token = \r\n" +
-                "External_01_User_Name = \r\n" +
-                "External_01_User_Password = \r\n" +
-                "External_01_User_ServerID = \r\n" +
-                "External_02_User_Name = \r\n" +
-                "External_02_User_Password = \r\n" +
-                "External_02_User_ServerID = \r\n";
+            string content = "{\r\n  \"Game_H\": \"\",\r\n  \"Game_W\": \"\",\r\n  \"Game_Memory\": \"\",\r\n  \"Microsoft_Token\": \"\",\r\n  \"External_01_User_Name\": \"\",\r\n  \"External_01_User_Password\": \"\",\r\n  \"External_01_User_ServerID\": \"\",\r\n  \"External_02_User_Name\": \"\",\r\n  \"External_02_User_Password\": \"\",\r\n  \"External_02_User_ServerID\": \"\"\r\n}";
 
             try
             {
@@ -73,7 +64,19 @@ namespace Aurora_Star_Launcher.Views.Pages
 
             try
             {
-                File.WriteAllText(filePath, content);
+                // 将JSON字符串转换为动态对象或强类型对象，这里使用动态对象为例。  
+                dynamic jsonData = JsonConvert.DeserializeObject(content);
+
+                // 检查JSON中是否存在特定的键值对或其他条件  
+                if (jsonData.ContainsKey("key") && jsonData["key"].ToString() == "value")
+                {
+                    // 包括
+                }
+                else
+                {
+                    // 不包括
+                    File.WriteAllText(filePath, content);
+                }
             }
             catch
             {
@@ -97,6 +100,7 @@ namespace Aurora_Star_Launcher.Views.Pages
             };
 
         }
+
 
         // 启动&登录 S
 
