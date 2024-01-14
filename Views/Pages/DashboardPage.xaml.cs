@@ -29,7 +29,19 @@ namespace Aurora_Star_Launcher.Views.Pages
             // 创建文件夹路径  
             string folderPath = Path.Combine(appRootDir, "ASL");
             string fileName = "config.txt"; // 文件名  
-            string filePath = Path.Combine(folderPath, fileName); // 拼接文件夹路径和文件名  
+            string filePath = Path.Combine(folderPath, fileName); // 拼接文件夹路径和文件名
+            //配置项模板写入
+            string content = 
+                "Game_H = \r\n" +
+                "Game_W = \r\n" +
+                "Game_Memory = \r\n" +
+                "Microsoft_Token = \r\n" +
+                "External_01_User_Name = \r\n" +
+                "External_01_User_Password = \r\n" +
+                "External_01_User_ServerID = \r\n" +
+                "External_02_User_Name = \r\n" +
+                "External_02_User_Password = \r\n" +
+                "External_02_User_ServerID = \r\n";
 
             try
             {
@@ -41,7 +53,6 @@ namespace Aurora_Star_Launcher.Views.Pages
                     {
                         // 如果文件不存在，则创建它  
                         File.Create(filePath).Close();
-                        MessageBox.Show("文件已成功创建!");
                     }
                     else
                     {
@@ -62,6 +73,15 @@ namespace Aurora_Star_Launcher.Views.Pages
 
             try
             {
+                File.WriteAllText(filePath, content);
+            }
+            catch
+            {
+                MessageBox.Show("配置项模板写入失败！", "⚠️警告！", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+            try
+            {
                 // 自动寻找版本
                 var versions = GameCoreUtil.GetGameCores();
                 version.ItemsSource = versions;//绑定数据源
@@ -73,7 +93,7 @@ namespace Aurora_Star_Launcher.Views.Pages
             }
             catch
             {
-                MessageBox.Show("无法获取Minecarft版本信息，若是第一次使用，请无视此消息！", "提示");
+                MessageBox.Show("无法获取Minecarft版本信息，若是第一次使用，请无视此消息！", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
             };
 
         }
