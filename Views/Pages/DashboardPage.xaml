@@ -28,9 +28,14 @@
             </TabItem>
             <TabItem Header="离线登录" Height="35" Width="80" HorizontalAlignment="Center">
                 <Grid Width="250">
-                    <Image x:Name="Offine_User_Img" Height="150" Width="150" Margin="32,32,24,181"/>
-                    <TextBox Text="Player" x:Name="Offine_User_Name" Height="40" Width="135" Margin="64,212,51,111"/>
-                    <Button Content="启动游戏" Background="BlueViolet" x:Name="Offine_Start" Height="55" Width="135" VerticalAlignment="Top" Click="Offine_Start_Click"  Margin="64,300,0,0"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="32*"/>
+                        <ColumnDefinition Width="85*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="Offine_User_Img" Height="150" Width="150" Margin="38,32,46,181" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <TextBox Text="Player" x:Name="Offine_User_Name" Height="40" Width="135" Margin="48,212,51,111" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <Button Content="启动游戏" Background="BlueViolet" x:Name="Offine_Start" Height="55" Width="135" VerticalAlignment="Top" Click="Offine_Start_Click"  Margin="48,300,0,0" Grid.Column="1" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
             <TabItem Header="第三方登录" Height="35" Width="80" HorizontalAlignment="Center">
