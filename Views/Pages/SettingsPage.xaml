@@ -50,7 +50,7 @@
         <TextBlock
             FontSize="20"
             FontWeight="Medium"
-            Text="游戏设置" Margin="5,115,695,860" />
+            Text="游戏设置" Margin="5,115,695,415" />
         <ui:CardControl Height="75" Margin="0,145,0,0" VerticalAlignment="Top">
             <Grid Height="45">
                 <TextBlock Width="500" Text="Java设置" FontSize="15" Margin="0,11,570,9"/>

@@ -7,7 +7,11 @@ using System.Reflection;
 using StarLight_Core.Models.Launch;
 using StarLight_Core.Utilities;
 using StarLight_Core.Launch;
+using System.IO;
+using System.Reflection;
+using Newtonsoft.Json;
 using MessageBox = System.Windows.MessageBox;
+using MessageBoxButton = System.Windows.MessageBoxButton;
 
 namespace Aurora_Star_Launcher.Views.Pages
 {
@@ -21,7 +25,66 @@ namespace Aurora_Star_Launcher.Views.Pages
             DataContext = this;
 
             InitializeComponent();
-            
+   
+            // 获取应用程序的根目录路径  
+            string appRootDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            // 创建文件夹路径  
+            string folderPath = Path.Combine(appRootDir, "ASL");
+            string fileName = "config.json"; // 文件名  
+            string filePath = Path.Combine(folderPath, fileName); // 拼接文件夹路径和文件名
+            //配置项模板写入
+            string content = "{\r\n  \"Game_H\": \"\",\r\n  \"Game_W\": \"\",\r\n  \"Game_Memory\": \"\",\r\n  \"Microsoft_Token\": \"\",\r\n  \"External_01_User_Name\": \"\",\r\n  \"External_01_User_Password\": \"\",\r\n  \"External_01_User_ServerID\": \"\",\r\n  \"External_02_User_Name\": \"\",\r\n  \"External_02_User_Password\": \"\",\r\n  \"External_02_User_ServerID\": \"\"\r\n}";
+
+            try
+            {
+                // 检查文件夹是否存在  
+                if (Directory.Exists(folderPath))
+                {
+                    // 检查文件是否存在  
+                    if (!File.Exists(filePath))
+                    {
+                        // 如果文件不存在，则创建它  
+                        File.Create(filePath).Close();
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+                    // 如果文件夹不存在，则创建文件夹和文件  
+                    Directory.CreateDirectory(folderPath);
+                    File.Create(filePath).Close();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("配置文件或文件夹未正常创建！", "⚠️警告！", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+            try
+            {
+                // 将JSON字符串转换为动态对象或强类型对象，这里使用动态对象为例。  
+                dynamic jsonData = JsonConvert.DeserializeObject(content);
+
+                // 检查JSON中是否存在特定的键值对或其他条件  
+                if (jsonData.ContainsKey("key") && jsonData["key"].ToString() == "value")
+                {
+                    // 包括
+                }
+                else
+                {
+                    // 不包括
+                    File.WriteAllText(filePath, content);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("配置项模板写入失败！", "⚠️警告！", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
             try
             {
                 // 自动寻找版本
@@ -36,10 +99,11 @@ namespace Aurora_Star_Launcher.Views.Pages
             }
             catch
             {
-                MessageBox.Show("无法获取Minecarft版本信息，若是第一次使用，请无视此消息！", "提示");
+                MessageBox.Show("无法获取Minecarft版本信息，若是第一次使用，请无视此消息！", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
             };
 
         }
+
 
         // 启动&登录 S
 
